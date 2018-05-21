@@ -9,10 +9,10 @@ $post = new post();
 if(isset($_GET['id'])){
     $id = $_GET['id'];
     $ket_qua = $post->editID($id);
-     while ($row = $ket_qua->fetch_array(MYSQLI_ASSOC))
+     while ($row = $ket_qua->fetch_array(MYSQLI_NUM))
     {
-        $tieude = $row['tieude'];
-        $noidung = $row['noidung'];
+        $tieude = $row[1];
+        $noidung = $row[2];
 ?>
 <form action="Edit.php" method="post">
     <table>

@@ -3,13 +3,19 @@ include 'post.php';
 $id = "";
 $tieude = "";
 $noidung = "";
+$td = "";
+$nameErr = "";
 $post = new post();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["id"])) { $id = $_POST['id']; }
-    if(isset($_POST["tt"])) { $tt = $_POST['tt']; }
-    if(isset($_POST["nd"])) { $nd = $_POST['nd']; }
+    if(!empty($_POST["tt"])) { 
+	$tt = $_POST['tt']; 
+    }
+    if(!empty($_POST["nd"])) 
+    {
+        $nd = $_POST['nd'];
+    }
 
-    if ($post->add($id, $tt, $nd) === TRUE) {
+    if ($post->add($tt, $nd) === TRUE) {
         echo "Thêm dữ liệu thành công";
          header('Location: index.php');
     } else {
@@ -21,11 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form action="" method="post">
     <table>
         <tr>
-            <th>ID</th>
-            <td><input type="text" name="id" value=""></td>
-        </tr>
-
-        <tr>
             <th>Tiêu Đề</th>
             <td><input type="text" name="tt" value=""></td>
         </tr>
@@ -36,5 +37,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </tr>
 
     </table>
-    <button type="submit">Gửi</button>
+    <button type="submit">Thêm</button>
 </form>

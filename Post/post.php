@@ -14,11 +14,11 @@ class post extends db {
         return $items;
     }
     //thêm
-    public function  add($id,$tt,$nd)
+    public function  add($tt,$nd)
     {
         $sql = "INSERT INTO
-			post(id, tieude, noidung)
-			VALUES ('$id', '$tt', '$nd')";
+			post(tieude, noidung)
+			VALUES ('$tt', '$nd')";
         $result = $this->query($sql);
 
 	return $result;
@@ -47,4 +47,5 @@ class post extends db {
 
 	return $result;
     }
+    
 }
